@@ -1,0 +1,96 @@
+﻿@using Project.Models
+@model IEnumerable<Project.Models.Buyer>
+
+@{
+    ViewBag.Title = "DisplayBuyers";
+}
+
+<h2>DisplayBuyers</h2>
+
+@if (User.IsInRole("Administrator"))
+{
+    <p>
+        @Html.ActionLink("Create New", "CreateBuyer")
+    </p>
+}
+
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('table.table').DataTable();
+        });
+    </script>
+}
+
+<table class="table" id="thetable">
+    <thead>
+        <tr>
+            <th>
+                First Name
+            </th>
+            <th>
+                Last Name
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Phone
+            </th>
+            <th>
+                City
+            </th>
+            <th>
+                State
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (Buyer b in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => b.FName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => b.LName)
+                </td>
+                <td>
+                    <a href="mailto:@b.Email">@Html.DisplayFor(modelItem => b.Email)</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => b.Phone)
+                </td>
+                <td>
+                    @Html.Action(controllerName: "AW",
+                                   actionName: "GetCity",
+                                   routeValues: new { cityID = b.CityID } )
+                </td>
+                <td>
+                    @Html.Action(controllerName: "AW",
+                                   actionName: "GetState",
+                                   routeValues: new { cityID = b.CityID } )
+                </td>
+                <td>
+                    @Html.ActionLink(linkText:"Edit",
+                        controllerName:"AW",
+                        actionName: "EditBuyer",
+                        htmlAttributes: new { @class = "btn btn-link" },
+                        routeValues: new { buyerID = b.IDBuyer }) |
+
+                    @Html.ActionLink(linkText:"Details",
+                        controllerName:"AW",
+                        actionName: "BuyerDetails",
+                        htmlAttributes: new { @class = "btn btn-link" },
+                        routeValues: new { buyerID = b.IDBuyer }) 
+
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+

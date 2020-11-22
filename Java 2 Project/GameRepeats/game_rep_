@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<GameMoves>
+  <Move figure="1211">
+    <X>0</X>
+    <Y>2</Y>
+  </Move>
+  <Move figure="1212">
+    <X>1</X>
+    <Y>2</Y>
+  </Move>
+  <Move figure="1221">
+    <X>2</X>
+    <Y>2</Y>
+  </Move>
+  <Move figure="1112">
+    <X>3</X>
+    <Y>2</Y>
+  </Move>
+</GameMoves>

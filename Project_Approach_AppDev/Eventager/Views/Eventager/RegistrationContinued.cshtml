@@ -1,0 +1,94 @@
+﻿@using Eventager.Models;
+@model Eventager.Models.User
+
+@{
+    ViewBag.Title = "RegistrationContinued";
+    var ddlSubs = ViewBag.ddlSubs as IEnumerable<Subscription>;
+    var ddlRoles = ViewBag.ddlRoles as IEnumerable<Role>;
+    var username = ViewBag.username as String;
+    var password = ViewBag.password as String;
+}
+
+<h2>RegistrationContinued</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.Hidden("Username", Request.Params["username"]);
+    @Html.Hidden("Password", Request.Params["password"]);
+
+<div class="form-horizontal">
+    <h4>User</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+  
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.FName, htmlAttributes: new { @class = "control-label col-md-2" }, labelText:"First Name:")
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.FName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.FName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.LName, htmlAttributes: new { @class = "control-label col-md-2" }, labelText: "Last Name:")
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.LName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.LName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" }, labelText: "Email:")
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.RoleID, htmlAttributes: new { @class = "control-label col-md-2" },
+            labelText: "Role:")
+        <div class="col-md-10">
+            @Html.DropDownList(
+                name: "RoleID",
+                selectList: new SelectList(
+                    items: ddlRoles,
+                    dataTextField: "Name",
+                    dataValueField: "IDRole"),
+                    htmlAttributes:new { @class="form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.SubscriptionID, htmlAttributes: new { @class = "control-label col-md-2" },
+            labelText: "Subscription:")
+        <div class="col-md-10">
+            @Html.DropDownList(
+                name: "SubscriptionID",
+                selectList: new SelectList(
+                    items:ddlSubs,
+                    dataTextField: "Type",
+                    dataValueField: "IDSubscription"),
+                    htmlAttributes:new { @class="form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

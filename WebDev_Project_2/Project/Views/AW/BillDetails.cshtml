@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Project.Models.Item>
+
+@{
+    ViewBag.Title = "BillDetails";
+}
+
+<h2>Bill Details</h2>
+
+<div>
+    @Html.ActionLink(linkText:"Back to Buyers List",
+                     controllerName:"AW",
+                     actionName:"DisplayBuyers")
+</div>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Amount
+        </th>
+        <th>
+            Product Name
+        </th>
+        <th>
+            Product Price per Item
+        </th>
+        <th>
+            Discount (%)
+        </th>
+        <th>
+            Total Price
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.Action(controllerName: "AW",
+                           actionName: "GetProduct",
+                           routeValues: new { productID = item.ProductID } )
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Discount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPrice)
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div>
+    @Html.ActionLink(linkText:"Back to Buyers List",
+                     controllerName:"AW",
+                     actionName:"DisplayBuyers")
+</div>
+

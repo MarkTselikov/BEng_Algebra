@@ -1,0 +1,67 @@
+.btnShortSolidSquare {
+    -fx-background-image: url('/Resources/icons/1111.png');
+}
+
+.btnShortHollowSquare {
+    -fx-background-image: url('/Resources/icons/1121.png');
+}
+
+.btnTallSolidSquare {
+    -fx-background-image: url('/Resources/icons/1211.png');
+}
+
+.btnTallHollowSquare {
+    -fx-background-image: url('/Resources/icons/1221.png');
+}
+
+.btnShortSolid {
+    -fx-background-image: url('/Resources/icons/1112.png');
+}
+
+.btnShortHollow {
+    -fx-background-image: url('/Resources/icons/1122.png');
+}
+
+.btnTallSolid {
+    -fx-background-image: url('/Resources/icons/1212.png');
+}
+
+.btnTallHollow {
+    -fx-background-image: url('/Resources/icons/1222.png');
+}
+
+.btnBShortSolidSquare {
+    -fx-background-image: url('/Resources/icons/2111.png');
+}
+
+.btnBShortHollowSquare {
+    -fx-background-image: url('/Resources/icons/2121.png');
+}
+
+.btnBTallSolidSquare {
+    -fx-background-image: url('/Resources/icons/2211.png');
+}
+
+.btnBTallHollowSquare {
+    -fx-background-image: url('/Resources/icons/2221.png');
+}
+
+.btnBShortSolid {
+    -fx-background-image: url('/Resources/icons/2112.png');
+}
+
+.btnBShortHollow {
+    -fx-background-image: url('/Resources/icons/2122.png');
+}
+
+.btnBTallSolid {
+    -fx-background-image: url('/Resources/icons/2212.png');
+}
+
+.btnBTallHollow {
+    -fx-background-image: url('/Resources/icons/2222.png');
+}
+
+.background-board {
+    -fx-background-image: url('/Resources/background_texture.jpg');
+}

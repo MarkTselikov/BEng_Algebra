@@ -1,0 +1,69 @@
+﻿@using Eventager.Models
+@model Eventager.Models.Event
+
+@{
+    ViewBag.Title = "EventDetails";
+    var lectures = ViewBag.lectures as IEnumerable<Lecture>;
+}
+
+<div width="500">
+    <h1>@Model.Name</h1>
+    <p>@Model.Description</p>
+    <p>
+        Category: @Html.Action(controllerName: "Eventager",
+                    actionName: "GetCategory",
+                    routeValues: new { categoryID = Model.CategoryID } )
+    </p>
+    <p>From: @Model.EventStart.ToShortDateString() To: @Model.EventEnd.ToShortDateString()</p>
+    <p>Break Time: @Model.BreakTime</p>
+
+    <h4>Lectures on that event: </h4>
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Lecturer</th>
+            <th>Hall</th>
+            <th>Capacity</th>
+        </tr>
+
+        @foreach (var lecture in lectures)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => lecture.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => lecture.Description)
+            </td>
+            <td>
+                @{var lStart = lecture.Start.ToShortTimeString();}
+                @Html.DisplayFor(modelItem => lStart)
+            </td>
+            <td>
+                @{var lEnd = lecture.End.ToShortTimeString();}
+                @Html.DisplayFor(modelItem => lEnd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => lecture.Hall)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => lecture.Capacity)
+            </td>
+
+            <td>
+                @Html.ActionLink(linkText:"Buy Tickets",
+                        controllerName:"Eventager",
+                        actionName: "BuyTicket",
+                        htmlAttributes: new { @class = "btn btn-link" },
+                        routeValues: new { lectureID = lecture.IDLecture })
+            </td>
+        </tr>
+        }
+    </table>
+
+</div>
+

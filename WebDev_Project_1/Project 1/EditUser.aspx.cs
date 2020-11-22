@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace Project_1
+{
+    public partial class EditUser : CustomPage
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            EditControl ec = LoadControl("Controls/EditControl.ascx") as EditControl;
+            editCtrl.InitForm(repo.GetPerson(int.Parse(Request.Cookies["userToEdit"].Value)));
+        }
+    }
+}

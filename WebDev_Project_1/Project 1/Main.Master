@@ -1,0 +1,123 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="Project_1.Main" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+
+    <link rel="stylesheet" href="jquery-ui.min.css">
+    <script src="external/jquery/jquery.js"></script>
+    <script src="jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <script src="Scripts/jquery-3.0.0.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/Style.css" rel="stylesheet" />
+
+    <style>
+        nav{
+            text-align: center;
+            margin: 20px auto;
+        }
+
+        nav ul li{
+            display: inline-block;
+            width: 150px;
+            margin: 0 15px;
+        }
+
+        nav ul li a:hover{
+            background-color: #eee;
+        }
+
+        .logout{
+            display: inline-block;
+            float: right;
+            margin-right: 10px;
+            background-color: mediumseagreen;
+            color: white;
+            font-size: .7em;
+        }
+
+        .login{
+            display: inline-block;
+            float: right;
+            margin-right: 10px;
+            background-color: darkorange;
+            color: white;
+            font-size: .7em;
+        }
+
+        .placeholder {
+          width: 100%;
+          text-align: center;
+          padding: 30px;
+        }
+
+        .inner {
+          display: inline-block;
+        }
+
+        .txtRepoType{
+            padding: 0 15px;
+        }
+
+        footer{
+            text-align: center;
+        }
+
+    </style>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="container mainContent">
+            <header>
+                <div id="topBar">
+                    <asp:LinkButton ID="lbLogout" CssClass="logout list-group-item" Text="Logout" runat="server" OnClick="lbLogout_Click" meta:resourcekey="lbLogoutResource1"></asp:LinkButton>
+                    <asp:LinkButton ID="lbLogin" CssClass="login list-group-item" runat="server" meta:resourcekey="lbLoginResource1"></asp:LinkButton>
+                    <h2><asp:Label Text="Title" ID="txtTitle" runat="server" meta:resourcekey="txtTitleResource1" /></h2>
+                </div>
+                <hr />
+                <nav>
+                    <ul id="menu">
+                        <li><a runat="server" class="list-group-item navLi" id="linkAdd" href="~/Add.aspx"><span class="glyphicon glyphicon-floppy-save" style="padding-right:5px;"></span>Add Person</a></li>
+                        <li><a runat="server" class="list-group-item navLi" id="linkEdit" href="~/Edit.aspx"><span class="glyphicon glyphicon-share" style="padding-right:5px;"></span>Edit Person</a></li>
+                        <li><a runat="server" class="list-group-item navLi" id="linkDisplay" href="~/Display.aspx"><span class="glyphicon glyphicon-list" style="padding-right:5px;"></span>Display People</a></li>
+                        <li><a runat="server" class="list-group-item navLi" id="linkSettings" href="~/Settings.aspx"><span class="glyphicon glyphicon-cog" style="padding-right:5px;"></span>Settings</a></li>
+                    </ul>
+                </nav>
+                <hr />
+            </header>
+
+            <div class="placeholder">
+                <div class="inner">
+                    <section>
+                        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </section>
+                </div>
+            </div>
+
+            <footer>
+                <hr />
+                <%: DateTime.Now.ToShortDateString() %> | <span style="color:red;">RWA</span> - Web Forms - Project
+                <br />
+                <asp:Label ID="txtRepoType" CssClass="btn-dark txtRepoType" runat="server" meta:resourcekey="txtRepoTypeResource1" />
+            </footer>
+        </div>
+    </form>
+</body>
+</html>

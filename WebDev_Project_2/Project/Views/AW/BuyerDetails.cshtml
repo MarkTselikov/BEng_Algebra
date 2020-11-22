@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Project.Models.Bill>
+
+@{
+    ViewBag.Title = "BuyerDetails";
+}
+
+<h2>Buyer Details</h2>
+
+<div>
+    @Html.ActionLink(linkText:"Back to List",
+                     controllerName:"AW",
+                     actionName:"DisplayBuyers")
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            Issue Date
+        </th>
+        <th>
+            Bill Number
+        </th>
+        <th>
+            Commercial
+        </th>
+        <th>
+            Credit Card
+        </th>
+        <th>
+            Comment
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IssueDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BillNumber )
+            </td>
+            <td>
+                @Html.Action(controllerName: "AW",
+                                   actionName: "GetCommercial",
+                                   routeValues: new { comID = item.CommercialID } )
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreditCardID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comment)
+            </td>
+
+            <td>
+                @Html.ActionLink(linkText:"Even More Details",
+                    controllerName:"AW",
+                    actionName: "BillDetails",
+                    htmlAttributes: new { @class = "btn btn-link" },
+                    routeValues: new { billID = item.IDBill })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div>
+    @Html.ActionLink(linkText:"Back to List",
+                     controllerName:"AW",
+                     actionName:"DisplayBuyers")
+</div>

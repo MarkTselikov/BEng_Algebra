@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<div class="form-group">
+    <p>E-mail:</p>
+    <input type="text" class="form-control" />
+</div>
+<div class="form-group">
+    <p>Poruka:</p>
+    <input type="text" class="form-control" />
+</div>
+
+<input type="button" value="Pošalji" id="btn" class="btn-primary" onclick="Posalji()" />
+
+<script>
+    //var btn = document.getElementById("btn");
+    //btn.click = Posalji;
+
+
+
+    function Posalji() {
+        alert("Poruka je poslana");
+    }
+
+</script>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditTextPreference
+        android:key="fullName"
+        android:title="@string/full_name"
+        />
+
+    <ListPreference
+        android:key="location"
+        android:title="@string/location"
+        android:entries="@array/locations_names"
+        android:entryValues="@array/locations_val"
+        />
+
+    <SwitchPreference
+        android:key="gender"
+        android:title="@string/gender"
+        android:summaryOn="Female"
+        android:summaryOff="Male"
+
+        />
+
+
+</PreferenceScreen>

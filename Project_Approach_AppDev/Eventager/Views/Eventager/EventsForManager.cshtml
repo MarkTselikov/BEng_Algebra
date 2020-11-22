@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Eventager.Models.Event>
+
+@{
+    ViewBag.Title = "EventsForManager";
+}
+
+<h2>EventsForManager</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Start of the Event
+        </th>
+        <th>
+            End of the Event
+        </th>
+        <th>
+            Category
+        </th>
+
+        <th>
+            Break time
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventStart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventEnd)
+            </td>
+            <td>
+                @Html.Action(controllerName: "Eventager",
+                                       actionName: "GetCategory",
+                                       routeValues: new { categoryID = item.CategoryID } )
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BreakTime)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink(linkText:"Details",
+                            controllerName:"Eventager",
+                            actionName: "EventDetails",
+                            htmlAttributes: new { @class = "btn btn-link" },
+                            routeValues: new { eventID = item.IDEvent })  |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+
+</table>

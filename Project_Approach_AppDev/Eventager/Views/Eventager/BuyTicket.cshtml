@@ -1,0 +1,51 @@
+﻿@model Eventager.Models.LecturePayment
+
+@{
+    ViewBag.Title = "BuyTicket";
+    var userID = (int)ViewBag.userID;
+    var lectureID = (int)ViewBag.lectureID;
+
+}
+
+<h2>BuyTicket</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.Hidden("UserID", userID);
+    @Html.Hidden("LectureID", lectureID);
+
+    <div class="form-horizontal">
+        <h4>LecturePayment</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CreditCard, htmlAttributes: new { @class = "control-label col-md-2" }, labelText: "Credit Card Number: ")
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CreditCard, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CreditCard, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NumOfTickets, htmlAttributes: new { @class = "control-label col-md-2" }, labelText: "Number of Tickets: ")
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NumOfTickets, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NumOfTickets, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "DisplayAllEvents")
+</div>
